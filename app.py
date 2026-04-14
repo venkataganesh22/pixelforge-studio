@@ -282,20 +282,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ── Sidebar ───────────────────────────────────────────────────────────────────
-with st.sidebar:
-    st.markdown('<div class="section-label">⚙ Configuration</div>', unsafe_allow_html=True)
-    st.markdown("---")
-
-    hf_token = st.text_input(
-        "HuggingFace API Token",
-        type="password",
-        help="Required for Text → Image generation. Get yours at huggingface.co",
-        placeholder="hf_••••••••••••••••••••",
-    )
-    if hf_token:
-        os.environ["HF_TOKEN"] = hf_token
-        st.success("Token saved ✓")
 
    
 # ── Tabs ──────────────────────────────────────────────────────────────────────

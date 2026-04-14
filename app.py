@@ -506,20 +506,7 @@ with tab1:
 # TAB 2 — AI IMAGE GENERATOR
 # ════════════════════════════════════════════════════════════════════════════════
 with tab2:
-    st.markdown("""
-    <div style="background: linear-gradient(135deg, rgba(124,106,247,0.12) 0%, rgba(232,121,249,0.08) 100%);
-                border: 1px solid rgba(124,106,247,0.25); border-radius:16px; padding:1.4rem; margin-bottom:1.5rem;">
-        <div style="font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:700; 
-                    background:linear-gradient(135deg,#7c6af7,#e879f9); -webkit-background-clip:text;
-                    -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:0.4rem;">
-            ✨ Stable Diffusion XL
-        </div>
-        <div style="color:#8888aa; font-size:0.9rem;">
-            Generate stunning images from text prompts using the SDXL model via HuggingFace Inference API.
-            Add your API token in the sidebar to begin.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    
 
     col_left, col_right = st.columns([1.1, 0.9])
 

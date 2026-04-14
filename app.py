@@ -13,17 +13,17 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap');
 
 :root {
-    --bg:       #12110f;   /* warm near-black */
-    --bg-card:  #1a1815;
-    --bg-card2: #22201c;
+    --bg:       #0f1115;
+    --bg-card:  #161a22;
+    --bg-card2: #1d2330;
 
-    --accent:   #b08968;   /* warm brown (leather tone) */
-    --accent2:  #7f5539;   /* deeper earthy brown */
+    --accent:   #5b6cff;   /* calm blue */
+    --accent2:  #8b93a7;   /* neutral support */
 
-    --text:     #e6dccf;   /* parchment-like */
-    --muted:    #a69b8f;   /* dusty gray */
+    --text:     #e8eaed;
+    --muted:    #9aa0aa;
 
-    --border:   rgba(176,137,104,0.25);
+    --border:   rgba(255,255,255,0.06);
 
     --fs:       0.95rem;
 }

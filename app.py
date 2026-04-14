@@ -5,12 +5,16 @@ import numpy as np
 from PIL import Image
 
 # ── Page config ───────────────────────────────────────────────────────────────
-st.set_page_config(
-    page_title="PixelForge Studio",
-    page_icon="🎨",
-    layout="wide",
-    initial_sidebar_state="collapsed",
-)
+st.markdown("""
+    <style>
+    .big-title {
+        font-size: 60px;
+        font-weight: bold;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+st.markdown('<p class="big-title">🎨 PixelForge Studio</p>', unsafe_allow_html=True)
 
 # ── Custom CSS ────────────────────────────────────────────────────────────────
 st.markdown("""

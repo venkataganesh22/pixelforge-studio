@@ -53,13 +53,13 @@ p, li, span, div, label, input, textarea, select {
 .hero { text-align:center; padding:2.2rem 0 1.8rem; }
 .hero h1 {
     font-family: 'Syne', sans-serif !important;
-    font-size: 3.5rem !important;
+    font-size: 5rem !important;
     font-weight: 800;
     background: linear-gradient(135deg, #7c6af7 0%, #e879f9 55%, #38bdf8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin: 0; letter-spacing:-1px; line-height:3.5;
+    margin: 0; letter-spacing:-2px; line-height:1.1;
 }
 .hero p { color:var(--muted); font-size:var(--fs) !important; margin-top:0.45rem; }
 

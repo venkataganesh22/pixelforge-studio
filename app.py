@@ -297,20 +297,7 @@ with st.sidebar:
         os.environ["HF_TOKEN"] = hf_token
         st.success("Token saved ✓")
 
-    st.markdown("---")
-    st.markdown("""
-    <div style="font-size:0.78rem; color: #8888aa; line-height:1.7">
-    <b style="color:#7c6af7">Module 1 — Image Studio</b><br>
-    • Format Conversion<br>
-    • Image Filters (OpenCV)<br>
-    • Pencil Sketch<br>
-    • Text Extraction (OCR)<br>
-    • Crop Tool<br><br>
-    <b style="color:#e879f9">Module 2 — AI Generator</b><br>
-    • Text → Image (SDXL)
-    </div>
-    """, unsafe_allow_html=True)
-
+   
 # ── Tabs ──────────────────────────────────────────────────────────────────────
 tab1, tab2 = st.tabs(["🖼  Image Studio", "✨  AI Image Generator"])
 

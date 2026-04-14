@@ -558,6 +558,7 @@ with tab2:
 
         if st.button("🪄  Generate Image", key="generate_btn", use_container_width=True):
             if not prompt.strip():
+                st.warning("Please enter a prompt.")
             else:
                 final_prompt = prompt + style_suffixes.get(style_preset, "")
                 from utils.text_to_image import generate_image_from_text

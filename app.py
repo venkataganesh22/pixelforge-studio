@@ -557,10 +557,7 @@ with tab2:
         }
 
         if st.button("🪄  Generate Image", key="generate_btn", use_container_width=True):
-            if not os.environ.get("HF_TOKEN"):
-                st.error("Please enter your HuggingFace API token in the sidebar first.")
-            elif not prompt.strip():
-                st.warning("Please enter a prompt.")
+            if not prompt.strip():
             else:
                 final_prompt = prompt + style_suffixes.get(style_preset, "")
                 from utils.text_to_image import generate_image_from_text

@@ -13,19 +13,19 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap');
 
 :root {
-    --bg:       #0f1115;   /* not pure black, easier on eyes */
-    --bg-card:  #161a21;
-    --bg-card2: #1d222b;
+    --bg:       #0a0a0f;
+    --bg-card:  rgba(255,255,255,0.05);
+    --bg-card2: rgba(255,255,255,0.08);
 
-    --accent:   #6d7cff;   /* slightly muted indigo */
-    --accent2:  #c084fc;   /* soft violet, not loud */
+    --accent:   #a78bfa;   /* soft violet */
+    --accent2:  #f472b6;   /* soft pink */
 
-    --text:     #e6e8ee;   /* off-white, less harsh */
-    --muted:    #9aa3b2;   /* realistic gray */
+    --text:     #f8fafc;
+    --muted:    #a1a1aa;
 
-    --border:   rgba(255,255,255,0.08);
+    --border:   rgba(255,255,255,0.12);
 
-    --fs:       0.94rem;
+    --fs:       0.95rem;
 }
 
 html, body, [class*="css"] {

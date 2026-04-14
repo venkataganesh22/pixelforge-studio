@@ -5,16 +5,7 @@ import numpy as np
 from PIL import Image
 
 # ── Page config ───────────────────────────────────────────────────────────────
-st.markdown("""
-    <style>
-    .big-title {
-        font-size: 60px;
-        font-weight: bold;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-st.markdown('<p class="big-title">🎨 PixelForge Studio</p>', unsafe_allow_html=True)
+st.set_page_config( page_title="PixelForge Studio", page_icon="🎨", layout="wide", initial_sidebar_state="collapsed", )
 
 # ── Custom CSS ────────────────────────────────────────────────────────────────
 st.markdown("""
@@ -58,7 +49,7 @@ p, li, span, div, label, input, textarea, select {
 .hero { text-align:center; padding:2.2rem 0 1.8rem; }
 .hero h1 {
     font-family: 'Syne', sans-serif !important;
-    font-size: 2.8rem !important;
+    font-size: 3.5rem !important;
     font-weight: 800;
     background: linear-gradient(135deg, #7c6af7 0%, #e879f9 55%, #38bdf8 100%);
     -webkit-background-clip: text;

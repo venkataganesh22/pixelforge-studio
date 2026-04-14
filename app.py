@@ -59,7 +59,7 @@ p, li, span, div, label, input, textarea, select {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin: 0; letter-spacing:-1px; line-height:1.15;
+    margin: 0; letter-spacing:-1px; line-height:3.5;
 }
 .hero p { color:var(--muted); font-size:var(--fs) !important; margin-top:0.45rem; }
 

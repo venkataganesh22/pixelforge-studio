@@ -376,27 +376,32 @@ with tab1:
             # Preset buttons
             st.markdown("**Presets**")
             p1, p2, p3, p4 = st.columns(4)
+            st.markdown("**Presets**")
+            p1, p2, p3, p4 = st.columns(4)
             if p1.button("1 : 1"):
                 nh = int(w * 1 / 1)
                 if nh <= h:
                     tp = (h - nh) // 2
                     st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
+                st.rerun()
             if p2.button("16 : 9"):
                 nh = int(w * 9 / 16)
                 if nh <= h:
                     tp = (h - nh) // 2
                     st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
+                st.rerun()
             if p3.button("4 : 3"):
                 nh = int(w * 3 / 4)
                 if nh <= h:
                     tp = (h - nh) // 2
                     st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
+                st.rerun()
             if p4.button("3 : 2"):
                 nh = int(w * 2 / 3)
                 if nh <= h:
                     tp = (h - nh) // 2
                     st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
-        
+                st.rerun()
             # Inputs read from session state
             c1, c2, c3, c4 = st.columns(4)
             left   = c1.number_input("Left",   min_value=0, max_value=w-1, value=int(st.session_state["crop_left"]),   step=1)

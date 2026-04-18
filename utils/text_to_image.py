@@ -22,17 +22,12 @@ def generate_image_from_text(prompt):
             headers=headers,
             json={
                 "inputs": prompt,
-                "parameters": {
-                    "num_inference_steps": 4  # FLUX.schnell is optimized for 4 steps
-                }
+                "parameters": {"num_inference_steps": 4}
             },
-            timeout=60  # bumped up — FLUX can take longer on cold start
+            timeout=60,
         )
-        
         if response.status_code == 200:
             return Image.open(io.BytesIO(response.content)), None
-        elif response.status_code == 404:
-            return None, "Model not found. Please check the model ID."
         elif response.status_code == 503:
             return None, "Model is starting up. Try again in 20 seconds."
         else:

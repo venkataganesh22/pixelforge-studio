@@ -362,7 +362,7 @@ with tab1:
             st.markdown('</div>', unsafe_allow_html=True)
 
         # ── CROP ─────────────────────────────────────────────────────────────
-       with s5:
+        with s5:
             st.markdown('<div class="card">', unsafe_allow_html=True)
             st.image(original_image, caption=f"{w} × {h}", use_container_width=True)
             st.markdown("---")

@@ -3,8 +3,7 @@ import requests
 import io
 from PIL import Image
 
-# Use the XL model for better reliability and quality
-API_URL = "https://router.huggingface.co/hf-inference/models/stabilityai/stable-diffusion-xl-base-1.0"
+API_URL = "https://router.huggingface.co/hf-inference/models/black-forest-labs/FLUX.1-schnell"
 
 def get_headers():
     token = os.getenv("HF_TOKEN")
@@ -16,10 +15,19 @@ def generate_image_from_text(prompt):
     headers = get_headers()
     if not headers:
         return None, "HF_TOKEN not found in environment variables."
-
+    
     try:
-        # We send the request to the new router URL
-        response = requests.post(API_URL, headers=headers, json={"inputs": prompt}, timeout=30)
+        response = requests.post(
+            API_URL,
+            headers=headers,
+            json={
+                "inputs": prompt,
+                "parameters": {
+                    "num_inference_steps": 4  # FLUX.schnell is optimized for 4 steps
+                }
+            },
+            timeout=60  # bumped up — FLUX can take longer on cold start
+        )
         
         if response.status_code == 200:
             return Image.open(io.BytesIO(response.content)), None

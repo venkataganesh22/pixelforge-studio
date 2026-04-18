@@ -367,47 +367,11 @@ with tab1:
             st.image(original_image, caption=f"{w} × {h}", use_container_width=True)
             st.markdown("---")
         
-            # Initialize crop values in session state
-            if "crop_left"   not in st.session_state: st.session_state["crop_left"]   = 0
-            if "crop_right"  not in st.session_state: st.session_state["crop_right"]  = w
-            if "crop_top"    not in st.session_state: st.session_state["crop_top"]    = 0
-            if "crop_bottom" not in st.session_state: st.session_state["crop_bottom"] = h
-        
-            # Preset buttons
-            st.markdown("**Presets**")
-            p1, p2, p3, p4 = st.columns(4)
-            st.markdown("**Presets**")
-            p1, p2, p3, p4 = st.columns(4)
-            if p1.button("1 : 1"):
-                nh = int(w * 1 / 1)
-                if nh <= h:
-                    tp = (h - nh) // 2
-                    st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
-                st.rerun()
-            if p2.button("16 : 9"):
-                nh = int(w * 9 / 16)
-                if nh <= h:
-                    tp = (h - nh) // 2
-                    st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
-                st.rerun()
-            if p3.button("4 : 3"):
-                nh = int(w * 3 / 4)
-                if nh <= h:
-                    tp = (h - nh) // 2
-                    st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
-                st.rerun()
-            if p4.button("3 : 2"):
-                nh = int(w * 2 / 3)
-                if nh <= h:
-                    tp = (h - nh) // 2
-                    st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
-                st.rerun()
-            # Inputs read from session state
             c1, c2, c3, c4 = st.columns(4)
-            left   = c1.number_input("Left",   min_value=0, max_value=w-1, value=int(st.session_state["crop_left"]),   step=1)
-            right  = c2.number_input("Right",  min_value=1, max_value=w,   value=int(st.session_state["crop_right"]),  step=1)
-            top    = c3.number_input("Top",    min_value=0, max_value=h-1, value=int(st.session_state["crop_top"]),    step=1)
-            bottom = c4.number_input("Bottom", min_value=1, max_value=h,   value=int(st.session_state["crop_bottom"]), step=1)
+            left   = c1.number_input("Left",   min_value=0, max_value=w-1, value=0, step=1)
+            right  = c2.number_input("Right",  min_value=1, max_value=w,   value=w, step=1)
+            top    = c3.number_input("Top",    min_value=0, max_value=h-1, value=0, step=1)
+            bottom = c4.number_input("Bottom", min_value=1, max_value=h,   value=h, step=1)
         
             if st.button("Crop", key="crop_btn"):
                 if left >= right or top >= bottom:
@@ -425,7 +389,6 @@ with tab1:
                 dl_btn(st.session_state["cropped_img"], "cropped.png", "PNG")
         
             st.markdown('</div>', unsafe_allow_html=True)
-                
 
 # ═════════════════════════════════════════════════════════════════════════════
 # TAB 2 — AI GENERATOR

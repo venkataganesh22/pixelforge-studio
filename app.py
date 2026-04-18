@@ -416,11 +416,7 @@ with tab2:
             height=120,
         )
 
-        with st.expander("Advanced options"):
-            st.text_area("Negative prompt",
-                placeholder="blurry, low quality, distorted, watermark…",
-                height=70, key="neg_prompt")
-            style_preset = st.selectbox("Style", list(STYLE_SUFFIXES.keys()))
+        style_preset = st.selectbox("Style", list(STYLE_SUFFIXES.keys()))
 
         if st.button("🪄  Generate", key="gen_btn", use_container_width=True):
             if not prompt.strip():
@@ -467,11 +463,3 @@ with tab2:
             </div>
             """, unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
-
-# ── Footer ────────────────────────────────────────────────────────────────────
-st.markdown("---")
-st.markdown("""
-<div style="text-align:center;color:#44445a;font-size:0.78rem;padding:0.4rem 0 1rem;">
-    ✦ PixelForge Studio · Streamlit · OpenCV · HuggingFace
-</div>
-""", unsafe_allow_html=True)

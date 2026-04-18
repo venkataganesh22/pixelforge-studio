@@ -359,60 +359,60 @@ with tab1:
 
         # ── CROP ─────────────────────────────────────────────────────────────
         with s5:
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.image(original_image, caption=f"{w} × {h}", use_container_width=True)
-    st.markdown("---")
-
-    # Initialize crop values in session state
-    if "crop_left"   not in st.session_state: st.session_state["crop_left"]   = 0
-    if "crop_right"  not in st.session_state: st.session_state["crop_right"]  = w
-    if "crop_top"    not in st.session_state: st.session_state["crop_top"]    = 0
-    if "crop_bottom" not in st.session_state: st.session_state["crop_bottom"] = h
-
-    # Preset buttons — update session state directly
-    st.markdown("**Presets**")
-    p1, p2, p3, p4 = st.columns(4)
-    if p1.button("1 : 1"):
-        nh = int(w * 1 / 1)
-        if nh <= h:
-            tp = (h - nh) // 2
-            st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
-    if p2.button("16 : 9"):
-        nh = int(w * 9 / 16)
-        if nh <= h:
-            tp = (h - nh) // 2
-            st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
-    if p3.button("4 : 3"):
-        nh = int(w * 3 / 4)
-        if nh <= h:
-            tp = (h - nh) // 2
-            st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
-    if p4.button("3 : 2"):
-        nh = int(w * 2 / 3)
-        if nh <= h:
-            tp = (h - nh) // 2
-            st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
-
-    # Inputs now read from session state
-    c1, c2, c3, c4 = st.columns(4)
-    left   = c1.number_input("Left",   min_value=0, max_value=w-1, value=st.session_state["crop_left"],   step=1)
-    right  = c2.number_input("Right",  min_value=1, max_value=w,   value=st.session_state["crop_right"],  step=1)
-    top    = c3.number_input("Top",    min_value=0, max_value=h-1, value=st.session_state["crop_top"],    step=1)
-    bottom = c4.number_input("Bottom", min_value=1, max_value=h,   value=st.session_state["crop_bottom"], step=1)
-
-    if st.button("Crop", key="crop_btn"):
-        if left >= right or top >= bottom:
-            st.error("Invalid bounds.")
-        else:
-            with st.spinner("Cropping…"):
-                cropped = original_image.convert("RGB").crop((int(left), int(top), int(right), int(bottom)))
-            cw, ch = cropped.size
-            st.success(f"Cropped to {cw} × {ch}px")
-            show_pair(original_image, cropped, "Cropped")
-            dl_btn(cropped, "cropped.png", "PNG")
-
-    st.markdown('</div>', unsafe_allow_html=True)
-
+            st.markdown('<div class="card">', unsafe_allow_html=True)
+            st.image(original_image, caption=f"{w} × {h}", use_container_width=True)
+            st.markdown("---")
+        
+            # Initialize crop values in session state
+            if "crop_left"   not in st.session_state: st.session_state["crop_left"]   = 0
+            if "crop_right"  not in st.session_state: st.session_state["crop_right"]  = w
+            if "crop_top"    not in st.session_state: st.session_state["crop_top"]    = 0
+            if "crop_bottom" not in st.session_state: st.session_state["crop_bottom"] = h
+        
+            # Preset buttons — update session state directly
+            st.markdown("**Presets**")
+            p1, p2, p3, p4 = st.columns(4)
+            if p1.button("1 : 1"):
+                nh = int(w * 1 / 1)
+                if nh <= h:
+                    tp = (h - nh) // 2
+                    st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
+            if p2.button("16 : 9"):
+                nh = int(w * 9 / 16)
+                if nh <= h:
+                    tp = (h - nh) // 2
+                    st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
+            if p3.button("4 : 3"):
+                nh = int(w * 3 / 4)
+                if nh <= h:
+                    tp = (h - nh) // 2
+                    st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
+            if p4.button("3 : 2"):
+                nh = int(w * 2 / 3)
+                if nh <= h:
+                    tp = (h - nh) // 2
+                    st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
+        
+            # Inputs now read from session state
+            c1, c2, c3, c4 = st.columns(4)
+            left   = c1.number_input("Left",   min_value=0, max_value=w-1, value=st.session_state["crop_left"],   step=1)
+            right  = c2.number_input("Right",  min_value=1, max_value=w,   value=st.session_state["crop_right"],  step=1)
+            top    = c3.number_input("Top",    min_value=0, max_value=h-1, value=st.session_state["crop_top"],    step=1)
+            bottom = c4.number_input("Bottom", min_value=1, max_value=h,   value=st.session_state["crop_bottom"], step=1)
+        
+            if st.button("Crop", key="crop_btn"):
+                if left >= right or top >= bottom:
+                    st.error("Invalid bounds.")
+                else:
+                    with st.spinner("Cropping…"):
+                        cropped = original_image.convert("RGB").crop((int(left), int(top), int(right), int(bottom)))
+                    cw, ch = cropped.size
+                    st.success(f"Cropped to {cw} × {ch}px")
+                    show_pair(original_image, cropped, "Cropped")
+                    dl_btn(cropped, "cropped.png", "PNG")
+        
+            st.markdown('</div>', unsafe_allow_html=True)
+        
 
 # ═════════════════════════════════════════════════════════════════════════════
 # TAB 2 — AI GENERATOR

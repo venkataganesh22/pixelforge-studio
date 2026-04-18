@@ -4,6 +4,10 @@ import os
 import numpy as np
 from PIL import Image
 
+# ── Load secrets into env ─────────────────────────────────────────────────────
+if "HF_TOKEN" in st.secrets:
+    os.environ["HF_TOKEN"] = st.secrets["HF_TOKEN"]
+
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config( page_title="PixelForge Studio", page_icon="🎨", layout="wide", initial_sidebar_state="collapsed", )
 

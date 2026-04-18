@@ -253,6 +253,10 @@ with tab1:
 
     if uploaded:
         original_image = Image.open(uploaded)
+        if "uploaded_name" not in st.session_state or st.session_state["uploaded_name"] != uploaded.name:
+            st.session_state["uploaded_name"] = uploaded.name
+        for key in ["cropped_img", "crop_source", "crop_left", "crop_right", "crop_top", "crop_bottom"]:
+            st.session_state.pop(key, None)
         w, h = original_image.size
 
         m1, m2, m3, m4 = st.columns(4)
@@ -358,7 +362,7 @@ with tab1:
             st.markdown('</div>', unsafe_allow_html=True)
 
         # ── CROP ─────────────────────────────────────────────────────────────
-        with s5:
+       with s5:
             st.markdown('<div class="card">', unsafe_allow_html=True)
             st.image(original_image, caption=f"{w} × {h}", use_container_width=True)
             st.markdown("---")
@@ -369,7 +373,7 @@ with tab1:
             if "crop_top"    not in st.session_state: st.session_state["crop_top"]    = 0
             if "crop_bottom" not in st.session_state: st.session_state["crop_bottom"] = h
         
-            # Preset buttons — update session state directly
+            # Preset buttons
             st.markdown("**Presets**")
             p1, p2, p3, p4 = st.columns(4)
             if p1.button("1 : 1"):
@@ -393,12 +397,12 @@ with tab1:
                     tp = (h - nh) // 2
                     st.session_state.update({"crop_left": 0, "crop_right": w, "crop_top": tp, "crop_bottom": tp + nh})
         
-            # Inputs now read from session state
+            # Inputs read from session state
             c1, c2, c3, c4 = st.columns(4)
-            left   = c1.number_input("Left",   min_value=0, max_value=w-1, value=st.session_state["crop_left"],   step=1)
-            right  = c2.number_input("Right",  min_value=1, max_value=w,   value=st.session_state["crop_right"],  step=1)
-            top    = c3.number_input("Top",    min_value=0, max_value=h-1, value=st.session_state["crop_top"],    step=1)
-            bottom = c4.number_input("Bottom", min_value=1, max_value=h,   value=st.session_state["crop_bottom"], step=1)
+            left   = c1.number_input("Left",   min_value=0, max_value=w-1, value=int(st.session_state["crop_left"]),   step=1)
+            right  = c2.number_input("Right",  min_value=1, max_value=w,   value=int(st.session_state["crop_right"]),  step=1)
+            top    = c3.number_input("Top",    min_value=0, max_value=h-1, value=int(st.session_state["crop_top"]),    step=1)
+            bottom = c4.number_input("Bottom", min_value=1, max_value=h,   value=int(st.session_state["crop_bottom"]), step=1)
         
             if st.button("Crop", key="crop_btn"):
                 if left >= right or top >= bottom:
@@ -406,13 +410,17 @@ with tab1:
                 else:
                     with st.spinner("Cropping…"):
                         cropped = original_image.convert("RGB").crop((int(left), int(top), int(right), int(bottom)))
-                    cw, ch = cropped.size
-                    st.success(f"Cropped to {cw} × {ch}px")
-                    show_pair(original_image, cropped, "Cropped")
-                    dl_btn(cropped, "cropped.png", "PNG")
+                    st.session_state["cropped_img"]  = cropped
+                    st.session_state["crop_source"]  = original_image.copy()
+        
+            if "cropped_img" in st.session_state:
+                cw, ch = st.session_state["cropped_img"].size
+                st.success(f"Cropped to {cw} × {ch}px")
+                show_pair(st.session_state["crop_source"], st.session_state["cropped_img"], "Cropped")
+                dl_btn(st.session_state["cropped_img"], "cropped.png", "PNG")
         
             st.markdown('</div>', unsafe_allow_html=True)
-        
+                
 
 # ═════════════════════════════════════════════════════════════════════════════
 # TAB 2 — AI GENERATOR

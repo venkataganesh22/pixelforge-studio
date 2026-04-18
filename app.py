@@ -20,16 +20,12 @@ st.markdown("""
     --bg:       #0f1115;
     --bg-card:  #161a22;
     --bg-card2: #1d2330;
-
-    --accent:   #5b6cff;   /* calm blue */
-    --accent2:  #8b93a7;   /* neutral support */
-
+    --accent:   #5b6cff;
+    --accent2:  #8b93a7;
     --text:     #e8eaed;
     --muted:    #9aa0aa;
-
     --border:   rgba(255,255,255,0.06);
-
-    --fs:       0.95rem;
+    --fs:       1rem;
 }
 
 html, body, [class*="css"] {
@@ -38,7 +34,7 @@ html, body, [class*="css"] {
     background-color: var(--bg) !important;
     color: var(--text) !important;
 }
-p, li, span, div, label, input, textarea, select {
+p, li, label, input, textarea, select {
     font-size: var(--fs) !important;
 }
 .stApp {
@@ -54,18 +50,27 @@ p, li, span, div, label, input, textarea, select {
 }
 
 /* Hero */
-.hero { text-align:center; padding:2.2rem 0 1.8rem; }
+.hero { text-align:center; padding:2.8rem 0 2rem; }
 .hero h1 {
     font-family: 'Syne', sans-serif !important;
-    font-size: 5rem !important;
+    font-size: 5.5rem !important;
     font-weight: 800;
     background: linear-gradient(135deg, #7c6af7 0%, #e879f9 55%, #38bdf8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin: 0; letter-spacing:-2px; line-height:1.1;
+    margin: 0;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    display: block !important;
+    width: 100% !important;
 }
-.hero p { color:var(--muted); font-size:var(--fs) !important; margin-top:0.45rem; }
+.hero p {
+    color: var(--muted) !important;
+    -webkit-text-fill-color: var(--muted) !important;
+    font-size: 1.05rem !important;
+    margin-top: 0.55rem;
+}
 
 /* Tabs */
 .stTabs [data-baseweb="tab-list"] {
@@ -75,8 +80,8 @@ p, li, span, div, label, input, textarea, select {
 }
 .stTabs [data-baseweb="tab"] {
     background:transparent !important; border-radius:9px !important;
-    color:var(--muted) !important; font-size:var(--fs) !important;
-    font-weight:500 !important; padding:7px 16px !important;
+    color:var(--muted) !important; font-size:1rem !important;
+    font-weight:500 !important; padding:8px 20px !important;
     border:none !important; transition:all 0.18s !important;
 }
 .stTabs [aria-selected="true"] {
@@ -99,17 +104,18 @@ p, li, span, div, label, input, textarea, select {
 
 /* Chip */
 .chip {
-    display:inline-block; font-size:0.7rem !important; font-weight:700;
+    display:inline-block; font-size:0.72rem !important; font-weight:700;
     letter-spacing:1.8px; text-transform:uppercase;
     color:var(--accent); margin-bottom:0.55rem;
+    -webkit-text-fill-color: var(--accent) !important;
 }
 
 /* Main buttons */
 .stButton > button {
     background: linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%) !important;
     color:#fff !important; border:none !important; border-radius:9px !important;
-    font-family:'DM Sans',sans-serif !important; font-size:var(--fs) !important;
-    font-weight:600 !important; padding:0.5rem 1.4rem !important;
+    font-family:'DM Sans',sans-serif !important; font-size:1rem !important;
+    font-weight:600 !important; padding:0.55rem 1.4rem !important;
     transition:all 0.18s !important;
     box-shadow:0 3px 12px rgba(124,106,247,0.28) !important;
 }
@@ -122,7 +128,7 @@ p, li, span, div, label, input, textarea, select {
 .stDownloadButton > button {
     background: linear-gradient(135deg,#059669 0%,#0891b2 100%) !important;
     color:#fff !important; border:none !important; border-radius:9px !important;
-    font-family:'DM Sans',sans-serif !important; font-size:var(--fs) !important;
+    font-family:'DM Sans',sans-serif !important; font-size:1rem !important;
     font-weight:600 !important; width:100% !important; padding:0.55rem !important;
     box-shadow:0 3px 12px rgba(5,150,105,0.25) !important;
 }
@@ -134,7 +140,18 @@ p, li, span, div, label, input, textarea, select {
 .stNumberInput input {
     background:var(--bg-card2) !important; border-color:var(--border) !important;
     border-radius:9px !important; color:var(--text) !important;
-    font-family:'DM Sans',sans-serif !important; font-size:var(--fs) !important;
+    font-family:'DM Sans',sans-serif !important; font-size:1rem !important;
+}
+
+/* Labels */
+.stTextArea label, .stTextInput label,
+.stSelectbox label, .stSlider label,
+.stRadio label, .stCheckbox label,
+.stNumberInput label, .stFileUploader label {
+    font-size: 1rem !important;
+    color: var(--text) !important;
+    -webkit-text-fill-color: var(--text) !important;
+    font-weight: 500 !important;
 }
 
 /* File uploader */
@@ -154,8 +171,16 @@ p, li, span, div, label, input, textarea, select {
     background:var(--bg-card2) !important; border:1px solid var(--border) !important;
     border-radius:10px !important; padding:0.7rem 0.9rem !important;
 }
-[data-testid="stMetricLabel"] { color:var(--muted) !important; font-size:0.78rem !important; }
-[data-testid="stMetricValue"] { color:var(--text) !important; font-size:1.05rem !important; }
+[data-testid="stMetricLabel"] {
+    color:var(--muted) !important;
+    -webkit-text-fill-color: var(--muted) !important;
+    font-size:0.82rem !important;
+}
+[data-testid="stMetricValue"] {
+    color:var(--text) !important;
+    -webkit-text-fill-color: var(--text) !important;
+    font-size:1.1rem !important;
+}
 
 /* Alerts */
 .stSuccess { background:rgba(5,150,105,0.1)  !important; border-color:#059669 !important; border-radius:9px !important; }
@@ -166,7 +191,8 @@ p, li, span, div, label, input, textarea, select {
 /* Expander */
 .streamlit-expanderHeader {
     background:var(--bg-card2) !important; border-radius:9px !important;
-    font-size:var(--fs) !important; color:var(--text) !important;
+    font-size:1rem !important; color:var(--text) !important;
+    -webkit-text-fill-color: var(--text) !important;
 }
 
 /* Misc */
@@ -368,10 +394,10 @@ with tab1:
 
     else:
         st.markdown("""
-        <div style="text-align:center;padding:4rem 2rem;color:#7878a0;">
+        <div style="text-align:center;padding:4rem 2rem;">
             <div style="font-size:3.5rem;margin-bottom:0.8rem;opacity:0.35">🖼</div>
-            <div style="font-size:0.92rem;color:#b0b0cc;font-weight:500;">Upload an image to get started</div>
-            <div style="font-size:0.85rem;margin-top:0.3rem;">JPG · PNG · BMP · WEBP · TIFF · GIF</div>
+            <div style="font-size:1rem;color:#b0b0cc;font-weight:500;-webkit-text-fill-color:#b0b0cc;">Upload an image to get started</div>
+            <div style="font-size:0.9rem;margin-top:0.3rem;color:#7878a0;-webkit-text-fill-color:#7878a0;">JPG · PNG · BMP · WEBP · TIFF · GIF</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -434,7 +460,6 @@ with tab2:
 
         st.markdown('</div>', unsafe_allow_html=True)
 
-        # ── Suggestions — click to fill prompt box ────────────────────────────
         st.markdown('<span class="chip" style="margin-top:0.6rem;display:block;">💡 Suggestions — click to use</span>', unsafe_allow_html=True)
         for ex in EXAMPLES:
             if st.button(ex, key=f"sug_{ex[:28]}"):
@@ -456,10 +481,18 @@ with tab2:
         else:
             st.markdown("""
             <div style="display:flex;flex-direction:column;align-items:center;
-                        justify-content:center;min-height:360px;color:#7878a0;text-align:center;">
+                        justify-content:center;min-height:360px;text-align:center;">
                 <div style="font-size:3.5rem;margin-bottom:0.8rem;opacity:0.3">✨</div>
-                <div style="font-size:0.92rem;color:#b0b0cc;font-weight:500;">Your image will appear here</div>
-                <div style="font-size:0.85rem;margin-top:0.3rem;">Write a prompt and hit Generate</div>
+                <div style="font-size:1rem;color:#b0b0cc;font-weight:500;-webkit-text-fill-color:#b0b0cc;">Your image will appear here</div>
+                <div style="font-size:0.9rem;margin-top:0.3rem;color:#7878a0;-webkit-text-fill-color:#7878a0;">Write a prompt and hit Generate</div>
             </div>
             """, unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
+
+# ── Footer ────────────────────────────────────────────────────────────────────
+st.markdown("---")
+st.markdown("""
+<div style="text-align:center;font-size:0.82rem;padding:0.4rem 0 1rem;color:#44445a;-webkit-text-fill-color:#44445a;">
+    ✦ PixelForge Studio · Streamlit · OpenCV · HuggingFace
+</div>
+""", unsafe_allow_html=True)
